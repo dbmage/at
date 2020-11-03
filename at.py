@@ -18,15 +18,15 @@ def runOsCmd(command,cmdin=None):
             out.stdin.write(cmdin.encode())
         output,errors = out.communicate()
         if errors:
-            log.error("Error occured running '%s': %s" % (command, errors))
+            log.error("Error occured running '%s': %s" % (command, errors.decode('utf-8')))
             return False
-        return output
+        return output.decode('utf-8')
     except:
         return False
 
-def getJobsList(queue):
+def getJobsList(queue='a'):
     # tab between jobid and day of week, 2 spaces between month and day of month if day is single digit
-    output = runOsCmd(['atq', "-q%s" % (queue)]).decode('utf-8').replace('\t', ' ').replace('  ', ' ')
+    output = runOsCmd(['atq', "-q%s" % (queue)]).replace('\t', ' ').replace('  ', ' ')
     jobs = {}
     jobqueue = output.split('\n')
     for job in jobqueue:
@@ -43,22 +43,25 @@ def getJobsList(queue):
             'queue' : jobqueue,
             'user' : jobuser
         }
+        jobs[jobid]['command'] = runOsCmd([ 'at', '-c', jobid]).strip().splitlines()[-1]
     return jobs
 
 def addJob(jobtime, queue, command):
     status = runOsCmd(['at', ':'.join(jobtime.split(':')[:2]), "-q%s" % (queue)], cmdin=command)
     if isinstance(status, bool):
         return False
-    return status.decode('utf-8').split('\n')[1].split(' ')[1]
+    return status.split('\n')[1].split(' ')[1]
 
 def addJobFromFile(jobtime, queue, file):
     filecontents = open(file).read()
     status = runOsCmd(['at', ':'.join(jobtime.split(':')[:2]), "-q%s" % (queue)], cmdin=filecontents)
     if isinstance(status, bool):
         return False
-    return status.decode('utf-8').split('\n')[1].split(' ')[1]
+    return status.split('\n')[1].split(' ')[1]
 
 def removeJob(jobid):
+    if isinstance(jobid, int):
+        jobid = "%i" % (jobid)
     status = runOsCmd(['atrm', jobid])
     if isinstance(status, bool):
         return False
