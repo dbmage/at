@@ -1,8 +1,10 @@
+''' Wrapper around subprocess to allow easy use of AT command '''
 import os
 import sys
+import logging
 import subprocess
 
-''' Wrapper around subprocess to allow easy use of AT command '''
+log = logging.getLogger(__name__)
 
 def runOsCmd(command,cmdin=None):
     if not isinstance(command, list):
@@ -11,13 +13,12 @@ def runOsCmd(command,cmdin=None):
         out = subprocess.Popen(command,
                stdin=subprocess.PIPE,
                stdout=subprocess.PIPE,
-               stderr=subprocess.STDOUT)
+               stderr=subprocess.PIPE)
         if cmdin != None:
             out.stdin.write(cmdin.encode())
         output,errors = out.communicate()
         if errors:
-            if log:
-                log.error("Error occured running '%s': %s" % (command, errors))
+            log.error("Error occured running '%s': %s" % (command, errors))
             return False
         return output
     except:
