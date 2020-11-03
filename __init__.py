@@ -20,7 +20,7 @@ except ImportError:
 
 logging.getLogger(__name__).addHandler(NullHandler())
 
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 __revision__ = ''
 __author__ = 'Joe Ash (DBMage)'
 __license__ = 'Apache 2.0'
