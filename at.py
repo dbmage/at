@@ -16,7 +16,8 @@ def runOsCmd(command,cmdin=None):
             out.stdin.write(cmdin.encode())
         output,errors = out.communicate()
         if errors:
-            log.error("Error occured running '%s': %s" % (command, errors))
+            if log:
+                log.error("Error occured running '%s': %s" % (command, errors))
             return False
         return output
     except:
