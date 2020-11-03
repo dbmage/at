@@ -14,7 +14,7 @@ at.addJob('10:00', 'b', 'echo "Hello world" >> /tmp/myjob.log') # Add job to ech
 at.addJobFromFile('23:00', 'c', '/home/user/mycommandfile') # Add job from file /home/user/mycommandfile at 11 pm today to queue 'c'
 at.clearJobs('d') # clear all jobs from queue 'c'
 at.removeJob(2) # clear job number 2. Job numbers (id) are unique. The numbers increment irrelevant of queue
-
+```
 
 ### getJobsList(queue)
 #### queue
