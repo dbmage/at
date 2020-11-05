@@ -21,6 +21,8 @@ def runOsCmd(command,cmdin=None):
         output,errors = out.communicate()
         if output:
             return output.decode('utf-8')
+        if output == errors:
+            return True
         errors = errors.decode('utf-8')
         jobid = jobidregex.findall(errors)
         if jobid == None:
@@ -36,7 +38,10 @@ def runOsCmd(command,cmdin=None):
 
 def getJobsList(queue='a'):
     # tab between jobid and day of week, 2 spaces between month and day of month if day is single digit
-    output = runOsCmd(['atq', "-q%s" % (queue)]).replace('\t', ' ').replace('  ', ' ')
+    output = runOsCmd(['atq', "-q%s" % (queue)])
+    if isinstance(output, bool):
+        return []
+    output = output.replace('\t', ' ').replace('  ', ' ')
     jobs = {}
     jobqueue = output.split('\n')
     for job in jobqueue:
