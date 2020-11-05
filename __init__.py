@@ -6,7 +6,7 @@ if not (sys.version_info[0] >= 3):
 if sys.platform == 'win32':
     raise EnvironmentError("This module is not supported on Windows")
 
-from .at import atsudo, runOsCmd, getJobsList, addJob, addJobFromFile, removeJob, clearJobs
+from .at import at
 
 ''' Set default logging handler to avoid "No handler found" warnings.
 Used code from requests 2.9.1, Copyright Kenneth Reitz'''
@@ -24,6 +24,4 @@ __version__ = '1.0.1'
 __revision__ = ''
 __author__ = 'Joe Ash (DBMage)'
 __license__ = 'Apache 2.0'
-__all__ = ['runOsCmd', 'getJobsList', 'addJob', 'addJobFromFile', 'removeJob', 'clearJobs', '__version__', '__revision__']
-
-
+__all__ = ['at' '__version__', '__revision__']
