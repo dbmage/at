@@ -6,7 +6,7 @@ if not (sys.version_info[0] >= 3):
 if sys.platform == 'win32':
     raise EnvironmentError("This module is not supported on Windows")
 
-from .at import runOsCmd, getJobsList, addJob, addJobFromFile, removeJob, clearJobs
+from .at import atsudo, runOsCmd, getJobsList, addJob, addJobFromFile, removeJob, clearJobs
 
 ''' Set default logging handler to avoid "No handler found" warnings.
 Used code from requests 2.9.1, Copyright Kenneth Reitz'''
