@@ -50,7 +50,7 @@ def getJobsList(queue='a'):
             continue
         job = job.replace('\t', ' ')
         jobid, jobday, jobmonth, jobdate, jobtime, jobyear, jobqueue, jobuser = job.split(' ')
-        dts = "%s-%s-%s %s" % (details['year'], details['month'], details['date'], details['time'])
+        dts = "%s-%s-%s %s" % (jobyear, jobmonth, jobdate, jobtime)
         dt = datetime.strptime(dts, '%Y-%b-%d %H:%M:%S')
         jobs[jobid] = {
             'dt' : dt,
