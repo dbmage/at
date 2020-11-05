@@ -7,11 +7,14 @@ import subprocess
 from datetime import datetime
 
 log = logging.getLogger(__name__)
+atsudo = False
 
 def runOsCmd(command,cmdin=None):
     if not isinstance(command, list):
         return False
     jobidregex = re.compile(r'job ([0-9]+) at')
+    if atsudo:
+        command.insert(0, 'sudo')
     try:
         out = subprocess.Popen(command,
                stdin=subprocess.PIPE,
