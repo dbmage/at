@@ -4,6 +4,7 @@ import re
 import sys
 import logging
 import subprocess
+from datetime import datetime
 
 log = logging.getLogger(__name__)
 
@@ -49,11 +50,14 @@ def getJobsList(queue='a'):
             continue
         job = job.replace('\t', ' ')
         jobid, jobday, jobmonth, jobdate, jobtime, jobyear, jobqueue, jobuser = job.split(' ')
+        dts = "%s-%s-%s %s" % (details['year'], details['month'], details['date'], details['time'])
+        dt = datetime.strptime(dts, '%Y-%b-%d %H:%M:%S')
         jobs[jobid] = {
+            'dt' : dt,
             'time' : jobtime,
             'day' : jobday,
             'date' : jobdate,
-            'month' : jobmonth,
+            'month' : dt.month,
             'year' : jobyear,
             'queue' : jobqueue,
             'user' : jobuser
