@@ -18,8 +18,11 @@ def runOsCmd(command,cmdin=None):
                stderr=subprocess.PIPE)
         if cmdin != None:
             out.stdin.write(cmdin.encode())
-        blank,output = out.communicate()
-        jobid = jobidregex.findall(output)
+        output,errors = out.communicate()
+        if output:
+            return output.decode('utf-8')
+        errors = errors.decode('utf-8')
+        jobid = jobidregex.findall(errors)
         if jobid == None:
             cmdout = ' '.join(command)
             if cmdin:
@@ -27,7 +30,8 @@ def runOsCmd(command,cmdin=None):
             log.error("Error occured running '%s': %s" % (cmdout, errors.decode('utf-8')))
             return False
         return jobid
-    except:
+    except Exception as e:
+        log.error("Error occured: %s" % (e))
         return False
 
 def getJobsList(queue='a'):
