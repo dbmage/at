@@ -29,7 +29,7 @@ def runOsCmd(command,cmdin=None):
                 cmdout += " %s" % (cmdin)
             log.error("Error occured running '%s': %s" % (cmdout, errors.decode('utf-8')))
             return False
-        return jobid
+        return jobid[0]
     except Exception as e:
         log.error("Error occured: %s" % (e))
         return False
