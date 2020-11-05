@@ -18,7 +18,10 @@ def runOsCmd(command,cmdin=None):
             out.stdin.write(cmdin.encode())
         output,errors = out.communicate()
         if errors:
-            log.error("Error occured running '%s': %s" % (command, errors.decode('utf-8')))
+            cmdout = ' '.join(command)
+            if cmdin:
+                cmdout += " %s" % (cmdin)
+            log.error("Error occured running '%s': %s" % (cmdout, errors.decode('utf-8')))
             return False
         return output.decode('utf-8')
     except:
