@@ -9,12 +9,21 @@ Add the location to your PYTHONPATH environment variable, or (for more advanced 
 ## Usage
 ```python
 import at
-at.getJobsList('a') # return any jobs in the 'a' queue
-at.addJob('10:00', 'b', 'echo "Hello world" >> /tmp/myjob.log') # Add job to echo Hello world to a file at 10 am today to queue 'b'
-at.addJobFromFile('23:00', 'c', '/home/user/mycommandfile') # Add job from file /home/user/mycommandfile at 11 pm today to queue 'c'
-at.clearJobs('d') # clear all jobs from queue 'd'
-at.removeJob(2) # clear job number 2. Job numbers (id) are unique. The numbers increment irrelevant of queue
+atd = at.at()
+atd.getJobsList('a') # return any jobs in the 'a' queue
+atd.addJob('10:00', 'b', 'echo "Hello world" >> /tmp/myjob.log') # Add job to echo Hello world to a file at 10 am today to queue 'b'
+atd.addJobFromFile('23:00', 'c', '/home/user/mycommandfile') # Add job from file /home/user/mycommandfile at 11 pm today to queue 'c'
+atd.clearJobs('d') # clear all jobs from queue 'd'
+atd.removeJob(2) # clear job number 2. Job numbers (id) are unique. The numbers increment irrelevant of queue
 ```
+### sudo
+If the user running the script can use at with sudo, you can tell the module to use sudo.
+The sudo flag of the object defaults to False, change it to True to enabel using sudo.
+If a password is required to run at with sudo, the user will prompted if possible. This will cause headless or cronned scripts to fail.
+```import at
+atd = at.at()
+atd.sudo = True```
+
 
 ### getJobsList(queue)
 #### queue
