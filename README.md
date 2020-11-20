@@ -12,7 +12,7 @@ import at
 at.getJobsList('a') # return any jobs in the 'a' queue
 at.addJob('10:00', 'b', 'echo "Hello world" >> /tmp/myjob.log') # Add job to echo Hello world to a file at 10 am today to queue 'b'
 at.addJobFromFile('23:00', 'c', '/home/user/mycommandfile') # Add job from file /home/user/mycommandfile at 11 pm today to queue 'c'
-at.clearJobs('d') # clear all jobs from queue 'c'
+at.clearJobs('d') # clear all jobs from queue 'd'
 at.removeJob(2) # clear job number 2. Job numbers (id) are unique. The numbers increment irrelevant of queue
 ```
 
