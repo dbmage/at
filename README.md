@@ -22,7 +22,8 @@ The sudo flag of the object defaults to False, change it to True to enabel using
 If a password is required to run at with sudo, the user will prompted if possible. This will cause headless or cronned scripts to fail.
 ```import at
 atd = at.at()
-atd.sudo = True```
+atd.sudo = True
+```
 
 
 ### getJobsList(queue)
