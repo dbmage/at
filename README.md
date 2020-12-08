@@ -37,10 +37,13 @@ A dictionary containing all jobs from that queue
 #### jobtime
 A human datetime or just time (to run the job today).
 I.E
+Run at 10AM today
 
 ```10:00```
 
-```12/20/2021 13:00```
+Run at 1pm on 12/20/21
+
+```13:00 12/20/2021```
 #### queue
 A single letter, lower and upper are separate queues, see the man page for more explanation.
 #### command
@@ -56,10 +59,13 @@ False if adding job failed.
 #### jobtime
 A human datetime or just time (to run the job today).
 I.E
+Run at 10AM today
 
 ```10:00```
 
-```12/20/2021 13:00```
+Run at 1pm on 12/20/21
+
+```13:00 12/20/2021`````
 #### queue
 A single letter, lower and upper are separate queues, see the man page for more explanation.
 #### file
