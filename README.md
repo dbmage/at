@@ -37,8 +37,10 @@ A dictionary containing all jobs from that queue
 #### jobtime
 A human datetime or just time (to run the job today).
 I.E
-'''10:00
-20/12/2021 13:00'''
+
+```10:00```
+
+```12/20/2021 13:00```
 #### queue
 A single letter, lower and upper are separate queues, see the man page for more explanation.
 #### command
@@ -54,8 +56,10 @@ False if adding job failed.
 #### jobtime
 A human datetime or just time (to run the job today).
 I.E
-'''10:00
-20/12/2021 13:00'''
+
+```10:00```
+
+```12/20/2021 13:00```
 #### queue
 A single letter, lower and upper are separate queues, see the man page for more explanation.
 #### file
