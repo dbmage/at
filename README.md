@@ -65,7 +65,7 @@ Run at 10AM today
 
 Run at 1pm on 20th Dec 2021
 
-```13:00 12/20/2021`````
+```13:00 12/20/2021```
 #### queue
 A single letter, lower and upper are separate queues, see the man page for more explanation.
 #### file
