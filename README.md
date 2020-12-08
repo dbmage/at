@@ -41,7 +41,7 @@ Run at 10AM today
 
 ```10:00```
 
-Run at 1pm on 12/20/21
+Run at 1pm on 20th Dec 2021
 
 ```13:00 12/20/2021```
 #### queue
@@ -63,7 +63,7 @@ Run at 10AM today
 
 ```10:00```
 
-Run at 1pm on 12/20/21
+Run at 1pm on 20th Dec 2021
 
 ```13:00 12/20/2021`````
 #### queue
