@@ -72,14 +72,15 @@ class at():
         return jobs
 
     def addJob(self, jobtime, queue, command):
-        status = self.runOsCmd(['at', ':'.join(jobtime.split(':')[:2]), "-q%s" % (queue)], cmdin=command)
+        jobtime = jobtime.split(' ')
+        status = self.runOsCmd(['at', "%s %s" % (':'.join(jobtime[1].split(':')[:2]), jobtime[0]), "-q%s" % (queue)], cmdin=command)
         if status == False:
             return False
         return status
 
     def addJobFromFile(self, jobtime, queue, file):
         filecontents = open(file).read()
-        status = self.runOsCmd(['at', ':'.join(jobtime.split(':')[:2]), "-q%s" % (queue)], cmdin=filecontents)
+        status = self.runOsCmd(['at', "%s %s" % (':'.join(jobtime[1].split(':')[:2]), jobtime[0]), "-q%s" % (queue)], cmdin=filecontents)
         if status == False:
             return False
         return status
