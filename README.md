@@ -94,7 +94,8 @@ Nothing
 #### command
 The AT command with params.
 I.E
-at -qa 10:00
+
+```at -qa 10:00```
 #### cmdin
 The command AT should at the specified time, can be the contents of file.
 Not required for requesting queues or removing jobs.
