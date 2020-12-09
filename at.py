@@ -36,7 +36,7 @@ class at():
                 cmdout = ' '.join(command)
                 if cmdin:
                     cmdout += " %s" % (cmdin)
-                log.error("Error occured running '%s': %s" % (cmdout, errors.decode('utf-8')))
+                log.error("Error occured running '%s': %s" % (cmdout, errors))
                 return False
             return jobid[0]
         except Exception as e:
