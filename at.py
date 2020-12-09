@@ -32,7 +32,7 @@ class at():
                 return True
             errors = errors.decode('utf-8')
             jobid = jobidregex.findall(errors)
-            if jobid == None:
+            if len(jobid) < 1:
                 cmdout = ' '.join(command)
                 if cmdin:
                     cmdout += " %s" % (cmdin)
@@ -75,7 +75,7 @@ class at():
         jobtime = jobtime.split(' ')
         status = self.runOsCmd(['at', "%s %s" % (':'.join(jobtime[1].split(':')[:2]), jobtime[0]), "-q%s" % (queue)], cmdin=command)
         if status == False:
-            return False
+            return None
         return status
 
     def addJobFromFile(self, jobtime, queue, file):
