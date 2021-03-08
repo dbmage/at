@@ -24,4 +24,4 @@ __version__ = '1.0.1'
 __revision__ = ''
 __author__ = 'Joe Ash (DBMage)'
 __license__ = 'Apache 2.0'
-__all__ = ['at' '__version__', '__revision__']
+__all__ = ['at', '__version__', '__revision__']
