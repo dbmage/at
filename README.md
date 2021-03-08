@@ -18,7 +18,7 @@ atd.removeJob(2) # clear job number 2. Job numbers (id) are unique. The numbers 
 ```
 ### sudo
 If the user running the script can use at with sudo, you can tell the module to use sudo.
-The sudo flag of the object defaults to False, change it to True to enabel using sudo.
+The sudo flag of the object defaults to False, change it to True to enable using sudo.
 If a password is required to run at with sudo, the user will prompted if possible. This will cause headless or cronned scripts to fail.
 ```import at
 atd = at.at()
