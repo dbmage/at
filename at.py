@@ -73,14 +73,35 @@ class at():
 
     def addJob(self, jobtime, queue, command):
         jobtime = jobtime.split(' ')
-        status = self.runOsCmd(['at', "%s %s" % (':'.join(jobtime[1].split(':')[:2]), jobtime[0]), "-q%s" % (queue)], cmdin=command)
+        jtime = ':'.join(jobtime[1].split(':')[:2])
+        jdate = jobtime[0]
+        if '-' in jdate:
+            jdate = jdate.split('-')
+        if '/' in jdate:
+            jdate = jdate.split('/')
+        if not isinstance(jdate, list):
+            log.error("Garbled date - %s" % (jobtime[1]))
+            return False
+        jdate = "%s/%s/%s" % (jdate[1], jdate[0], jdate[2])
+        status = self.runOsCmd(['at', "%s %s" % (jtime, jdate), "-q%s" % (queue)], cmdin=command)
         if status == False:
-            return None
+            return False
         return status
 
     def addJobFromFile(self, jobtime, queue, file):
         filecontents = open(file).read()
-        status = self.runOsCmd(['at', "%s %s" % (':'.join(jobtime[1].split(':')[:2]), jobtime[0]), "-q%s" % (queue)], cmdin=filecontents)
+        jobtime = jobtime.split(' ')
+        jtime = ':'.join(jobtime[1].split(':')[:2])
+        jdate = jobtime[0]
+        if '-' in jdate:
+            jdate = jdate.split('-')
+        if '/' in jdate:
+            jdate = jdate.split('/')
+        if not isinstance(jdate, list):
+            log.error("Garbled date - %s" % (jobtime[1]))
+            return False
+        jdate = "%s/%s/%s" % (jdate[1], jdate[0], jdate[2])
+        status = self.runOsCmd(['at', "%s %s" % (jtime, jdate), "-q%s" % (queue)], cmdin=filecontents)
         if status == False:
             return False
         return status
