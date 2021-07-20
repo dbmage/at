@@ -43,7 +43,7 @@ Run at 10AM today
 
 Run at 1pm on 20th Dec 2021
 
-```13:00 12/20/2021```
+```13:00 20/12/2021```
 #### queue
 A single letter, lower and upper are separate queues, see the man page for more explanation.
 #### command
@@ -65,7 +65,7 @@ Run at 10AM today
 
 Run at 1pm on 20th Dec 2021
 
-```13:00 12/20/2021```
+```13:00 20/12/2021```
 #### queue
 A single letter, lower and upper are separate queues, see the man page for more explanation.
 #### file
@@ -77,7 +77,7 @@ False if adding job failed.
 
 ### removeJob(jobid)
 #### jobid
-A unique job number, shown when 
+A unique job number, shown when
 #### returns
 True is job was successfully removed
 False if removal failed
@@ -99,5 +99,3 @@ I.E
 #### cmdin
 The command AT should at the specified time, can be the contents of file.
 Not required for requesting queues or removing jobs.
-
-
