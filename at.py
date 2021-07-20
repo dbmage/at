@@ -73,8 +73,8 @@ class at():
 
     def addJob(self, jobtime, queue, command):
         jobtime = jobtime.split(' ')
-        jtime = ':'.join(jobtime[1].split(':')[:2])
-        jdate = jobtime[0]
+        jtime = ':'.join(jobtime[0].split(':')[:2])
+        jdate = jobtime[1]
         if '-' in jdate:
             jdate = jdate.split('-')
         if '/' in jdate:
@@ -91,8 +91,8 @@ class at():
     def addJobFromFile(self, jobtime, queue, file):
         filecontents = open(file).read()
         jobtime = jobtime.split(' ')
-        jtime = ':'.join(jobtime[1].split(':')[:2])
-        jdate = jobtime[0]
+        jtime = ':'.join(jobtime[0].split(':')[:2])
+        jdate = jobtime[1]
         if '-' in jdate:
             jdate = jdate.split('-')
         if '/' in jdate:
